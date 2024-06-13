@@ -1,4 +1,3 @@
-// src/index.js
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
@@ -18,7 +17,7 @@ app.get('/hello', (req: Request, res: Response) => {
   res.send('Hello World');
 });
 
-app.get('/hello/:username', (req: Request, res: Response) => {
+app.get('/hello/user/:username', (req: Request, res: Response) => {
   const { username } = req.params;
   if (!username) {
     return res.status(400).send('Username is required');
@@ -27,7 +26,7 @@ app.get('/hello/:username', (req: Request, res: Response) => {
 });
 
 app.post('/hello', (req: Request, res: Response) => {
-  const  {username}  = req.body;
+  const { username } = req.body;
   if (!username) {
     return res.status(400).send('Username is required');
   }
@@ -37,3 +36,5 @@ app.post('/hello', (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
+
+export default app;
